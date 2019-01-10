@@ -5,11 +5,15 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
+import firebase from 'firebase/app';
 import Home from '../components/pages/Home/Home';
 import MyNav from '../components/MyNav/MyNav';
 import Auth from '../components/pages/Auth/Auth';
+import Friends from '../components/pages/Friends/Friends';
+import Holidays from '../components/pages/Holidays/Holidays';
+import NewFriend from '../components/pages/NewFriend/NewFriend';
+import NewHoliday from '../components/pages/NewHoliday/NewHoliday';
 import authMethods from '../helpers/authMethods/authMethods';
-import firebase from 'firebase/app';
 import 'firebase/auth';
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -31,6 +35,7 @@ const PrivateRoute = ({ component: Component, authed, ...rest }) => {
 class App extends React.Component {
   state = {
     authed: false,
+    pendingUser: true,
   }
 
   componentDidMount() {
@@ -39,9 +44,9 @@ class App extends React.Component {
     }
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.setState({ authed: true });
+        this.setState({ authed: true, pendingUser: false });
       } else {
-        this.setState({ authed: false });
+        this.setState({ authed: false, pendingUser: false });
       }
     });
   }
@@ -56,6 +61,14 @@ class App extends React.Component {
             <Switch>
               <PublicRoute path='/auth' component={Auth} authed={this.state.authed}/>
               <PrivateRoute path='/home' component={Home} authed={this.state.authed}/>
+              <PrivateRoute path='/friends' exact component={Friends} authed={this.state.authed}/>
+              <PrivateRoute path='/holidays' exact component={Holidays} authed={this.state.authed}/>
+              <PrivateRoute path='/friends/new' exact component={NewFriend} authed={this.state.authed}/>
+              <PrivateRoute path='/holidays/new' exact component={NewHoliday} authed={this.state.authed}/>
+              {/* <PrivateRoute path='/home' component={Home} authed={this.state.authed}/>
+              <PrivateRoute path='/home' component={Home} authed={this.state.authed}/>
+              <PrivateRoute path='/home' component={Home} authed={this.state.authed}/>
+              <PrivateRoute path='/home' component={Home} authed={this.state.authed}/> */}
               <PrivateRoute path='/' exact component={Home} authed={this.state.authed} />
             </Switch>
           </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import authMethods from '../../helpers/authMethods/authMethods';
 import {
   Navbar,
   NavbarBrand,
@@ -9,6 +8,8 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
+import { NavLink as RRNavLink } from 'react-router-dom';
+import authMethods from '../../helpers/authMethods/authMethods';
 import './MyNav.scss';
 
 class MyNav extends React.Component {
@@ -25,16 +26,32 @@ class MyNav extends React.Component {
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
-                <NavItem className="selector">
+                <NavItem
+                className="selector"
+                tag={RRNavLink}
+                to='/friends'
+                >
                   <NavLink>Friends</NavLink>
                 </NavItem>
-                <NavItem className="selector">
+                <NavItem
+                className="selector"
+                tag={RRNavLink}
+                to='/holidays'
+                >
                   <NavLink>Holidays</NavLink>
                 </NavItem>
-                <NavItem className="selector">
+                <NavItem
+                className="selector"
+                tag={RRNavLink}
+                to='/friends/new'
+                >
                   <NavLink>New Friend</NavLink>
                 </NavItem>
-                <NavItem className="selector">
+                <NavItem
+                className="selector"
+                tag={RRNavLink}
+                to='/holidays/new'
+                >
                   <NavLink>New Holidays</NavLink>
                 </NavItem>
                 <NavItem className="selector" onClick={authMethods.logout}>
