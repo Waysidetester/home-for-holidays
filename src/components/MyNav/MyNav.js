@@ -1,4 +1,5 @@
 import React from 'react';
+import authMethods from '../../helpers/authMethods/authMethods';
 import {
   Navbar,
   NavbarBrand,
@@ -31,12 +32,12 @@ class MyNav extends React.Component {
                   <NavLink>Holidays</NavLink>
                 </NavItem>
                 <NavItem className="selector">
-                  <NavLink>Add Friend</NavLink>
+                  <NavLink>New Friend</NavLink>
                 </NavItem>
                 <NavItem className="selector">
-                  <NavLink>Add Holidays</NavLink>
+                  <NavLink>New Holidays</NavLink>
                 </NavItem>
-                <NavItem className="selector">
+                <NavItem className="selector" onClick={authMethods.logout}>
                   <NavLink>Signout</NavLink>
                 </NavItem>
               </Nav>
