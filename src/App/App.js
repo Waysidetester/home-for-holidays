@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import MyNav from '../components/MyNav/MyNav';
-import logo from '../logo.svg';
+import {
+  BrowserRouter,
+  Route,
+  Redirect,
+  Switch,
+} from 'react-router-dom';
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
+  state = {
+    authed: false,
+  }
+
   render() {
     return (
       <div className="App">
-        <MyNav />
+        <MyNav authed={this.state.authed}/>
       </div>
     );
   }

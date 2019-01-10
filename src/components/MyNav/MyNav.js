@@ -16,19 +16,43 @@ class MyNav extends React.Component {
   }
 
   render() {
+    if (this.props.authed) {
+      return (
+        <div>
+          <Navbar color="dark" dark expand="md">
+            <NavbarBrand href="/">Home for the Holidays</NavbarBrand>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="ml-auto" navbar>
+                <NavItem className="selector">
+                  <NavLink>Friends</NavLink>
+                </NavItem>
+                <NavItem className="selector">
+                  <NavLink>Holidays</NavLink>
+                </NavItem>
+                <NavItem className="selector">
+                  <NavLink>Add Friend</NavLink>
+                </NavItem>
+                <NavItem className="selector">
+                  <NavLink>Add Holidays</NavLink>
+                </NavItem>
+                <NavItem className="selector">
+                  <NavLink>Signout</NavLink>
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </Navbar>
+        </div>
+      );
+    }
+
     return (
       <div>
         <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
+          <NavbarBrand href="/">Home for the Holidays</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
