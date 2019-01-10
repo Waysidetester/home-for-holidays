@@ -1,5 +1,5 @@
 import React from 'react';
-import './Holidays';
+import './Holidays.scss';
 
 class Holidays extends React.Component {
   render() {

@@ -13,6 +13,7 @@ import Friends from '../components/pages/Friends/Friends';
 import Holidays from '../components/pages/Holidays/Holidays';
 import NewFriend from '../components/pages/NewFriend/NewFriend';
 import NewHoliday from '../components/pages/NewHoliday/NewHoliday';
+import EditFriend from '../components/pages/EditFriend/EditFriend';
 import authMethods from '../helpers/authMethods/authMethods';
 import 'firebase/auth';
 import './App.scss';
@@ -65,6 +66,7 @@ class App extends React.Component {
               <PrivateRoute path='/holidays' exact component={Holidays} authed={this.state.authed}/>
               <PrivateRoute path='/friends/new' exact component={NewFriend} authed={this.state.authed}/>
               <PrivateRoute path='/holidays/new' exact component={NewHoliday} authed={this.state.authed}/>
+              <PrivateRoute path='/friends/:id/edit' exact component={EditFriend} authed={this.state.authed}/>
               {/* <PrivateRoute path='/home' component={Home} authed={this.state.authed}/>
               <PrivateRoute path='/home' component={Home} authed={this.state.authed}/>
               <PrivateRoute path='/home' component={Home} authed={this.state.authed}/>

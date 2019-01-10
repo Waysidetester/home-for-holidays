@@ -1,11 +1,11 @@
 import React from 'react';
-import './NewHoliday';
+import './NewHoliday.scss';
 
 class NewHoliday extends React.Component {
   render() {
     return (
       <div>
-        NewHoliday
+        New Holiday
       </div>
     );
   }
